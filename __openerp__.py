@@ -2,11 +2,11 @@
     'name': 'Portal - Vendedores',
     'category': 'Sales',
     'version': '0.1',
-    'depends': ['base','sale','product'],
+    'depends': ['base','sale','product','stock'],
     'data': [
-	#'account_view.xml',
-	#'taxes_report.xml',
-	#'partner_view.xml',
+	'security/security.xml',
+	'security/ir.model.access.csv',
+	'portal_view.xml',
     ],
     'demo': [
     ],

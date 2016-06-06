@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Top menu item -->
+        <!--
+            This menu item's purpose is to overwrite another one defined in
+            the base module in order to set new groups.
+        -->
+        <record id="portal_customer_rfm_tree" model="ir.ui.view">
+                <field name="name">Clientes RFM</field>
+                <field name="model">res.partner</field>
+                <field name="arch" type="xml">
+                        <tree>
+                                <field name="name"/>
+                                <field name="phone"/>
+                                <field name="credit"/>
+                                <field name="last_sale_date"/>
+                                <field name="avg_sales_amount"/>
+                                <field name="sales_frequency"/>
+                        </tree>
+                </field>
+        </record>
+
+        <record id="action_res_partner_tree_portal" model="ir.actions.act_window">
+            <field name="name">Portal Clientes</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="portal_customer_rfm_tree"/>
+            <field name="domain">[('is_company', '=', True)]</field>
+            <field name="groups_id" eval="[(6, 0, [ref('group_sale_portal_salesman') ])]"/>
+            <field name="help">No cuenta con clientes asignados.</field>
+        </record>
+
+        <record id="action_saleorders_tree_portal" model="ir.actions.act_window">
+            <field name="name">Portal Pedidos</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!-- field name="view_id" ref="view_portal_quotation_tree"/ -->
+            <field name="domain">[('state', 'not in', ['draft', 'sent'])]</field>
+            <!-- field name="groups_id" eval="[(6, 0, [ref('base.group_portal') ])]"/ -->
+            <field name="help">No cuenta con pedidos creados.</field>
+        </record>
+
+
+        <record id="action_quotations_tree_portal" model="ir.actions.act_window">
+            <field name="name">Portal Presupuestos</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!-- field name="view_id" ref="view_portal_quotation_tree"/ -->
+            <field name="domain">[('state', 'in', ['draft', 'sent'])]</field>
+            <!-- field name="groups_id" eval="[(6, 0, [ref('base.group_portal') ])]"/ -->
+            <field name="help">No cuenta con presupuestos creados.</field>
+        </record>
+
+
+        <menuitem name="Portal Ventas"
+            id="menu_portal_ventas"
+            groups="group_sale_portal_salesman"/>
+
+        <menuitem name="Ventas"
+            id="menu_portal_ventas_ventas"
+	    parent="menu_portal_ventas"
+            groups="group_sale_portal_salesman"/>
+
+        <menuitem name="Presupuestos" id="portal_ventas_presupuestos" parent="menu_portal_ventas_ventas" 
+            action="action_quotations_tree_portal" sequence="30"/>
+        <menuitem name="Pedidos" id="portal_ventas_pedidos" parent="menu_portal_ventas_ventas" 
+            action="action_saleorders_tree_portal" sequence="30"/>
+        <menuitem name="Clientes" id="portal_ventas_clientes" parent="menu_portal_ventas_ventas" 
+            action="action_res_partner_tree_portal" sequence="30"/>
+
+
+    </data>
+</openerp>

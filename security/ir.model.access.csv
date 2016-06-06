@@ -1,0 +1,26 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_stock_move,stock.stock_move,stock.model_stock_move,group_sale_portal_salesman,1,0,0,0
+access_res_users,res.users,base.model_res_users,group_sale_portal_salesman,1,1,1,1
+access_sale_order,sale.order,sale.model_sale_order,group_sale_portal_salesman,1,1,1,0
+access_sale_order_line,sale.order.line,sale.model_sale_order_line,group_sale_portal_salesman,1,1,1,1
+access_account_invoice_tax_salesman,account_invoice_tax salesman,account.model_account_invoice_tax,group_sale_portal_salesman,1,0,0,0
+access_account_invoice_salesman,account_invoice salesman,account.model_account_invoice,group_sale_portal_salesman,1,0,0,0
+access_account_invoice_line_salesman,account_invoice.line salesman,account.model_account_invoice_line,group_sale_portal_salesman,1,0,0,0
+access_account_payment_term_salesman,account_payment_term salesman,account.model_account_payment_term,group_sale_portal_salesman,1,0,0,0
+access_account_analytic_account_salesman,account_analytic_account salesman,analytic.model_account_analytic_account,group_sale_portal_salesman,1,1,1,0
+access_ir_property_sales,ir.property.sales,base.model_ir_property,group_sale_portal_salesman,1,1,1,1
+access_sale_account_journal,account.journal sale order.user,account.model_account_journal,group_sale_portal_salesman,1,0,0,0
+access_res_partner_sale_user,res.partner.sale.user,base.model_res_partner,group_sale_portal_salesman,1,0,0,0
+access_product_template_sale_user,product.template sale use,product.model_product_template,group_sale_portal_salesman,1,0,0,0
+access_product_product_sale_user,product.product sale use,product.model_product_product,group_sale_portal_salesman,1,0,0,0
+access_account_fiscalyear_user,account.fiscalyear.user,account.model_account_fiscalyear,group_sale_portal_salesman,1,0,0,0
+access_account_tax_user,account.tax.user,account.model_account_tax,group_sale_portal_salesman,1,0,0,0
+access_ir_attachment_sales,ir.attachment.sales,base.model_ir_attachment,group_sale_portal_salesman,1,1,1,0
+access_res_partner_bank_type_user,res.partner.bank.type.user,base.model_res_partner_bank_type,group_sale_portal_salesman,1,0,0,0
+access_res_partner_bank_type_field_user,res.partner.bank.type.field.user,base.model_res_partner_bank_type_field,group_sale_portal_salesman,1,0,0,0
+access_product_uom_user,product.uom.user,product.model_product_uom,group_sale_portal_salesman,1,0,0,0
+access_product_pricelist_sale_user,product.pricelist.sale.user,product.model_product_pricelist,group_sale_portal_salesman,1,0,0,0
+access_account_account_salesman,account_account salesman,account.model_account_account,group_sale_portal_salesman,1,0,0,0
+access_product_supplierinfo_user,product.supplierinfo.user,product.model_product_supplierinfo,group_sale_portal_salesman,1,0,0,0
+access_account_invoice_report_salesman,account.invoice.report salesman,account.model_account_invoice_report,group_sale_portal_salesman,1,0,0,0
+access_account_move_line_salesman,account.move.line invoice,account.model_account_move_line,group_sale_portal_salesman,1,0,0,0
