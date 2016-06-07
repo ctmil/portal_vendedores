@@ -4,9 +4,22 @@
 
         <!-- Top menu item -->
         <!--
+		base.group_sale_manager
             This menu item's purpose is to overwrite another one defined in
             the base module in order to set new groups.
         -->
+
+        <record model="ir.ui.view" id="sale_order_form_portal_ventas">
+            <field name="name">sale.order.form.portal.ventas</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+		<button name="action_button_confirm" position="attributes">
+			<attribute name="groups">base.group_sale_manager</attribute>
+		</button>
+            </field>
+        </record>
+
         <record id="portal_customer_rfm_tree" model="ir.ui.view">
                 <field name="name">Clientes RFM</field>
                 <field name="model">res.partner</field>
