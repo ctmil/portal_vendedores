@@ -1,4 +1,9 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_afip_concept_type,l10n_ar_invoice.afip_concept_type,l10n_ar_invoice.model_afip_concept_type,group_sale_portal_salesman,1,0,0,0
+access_account_move_reconcile,account.account_move_reconcile,account.model_account_move_reconcile,group_sale_portal_salesman,1,0,0,0
+access_account_move,account.account_move,account.model_account_move,group_sale_portal_salesman,1,0,0,0
+access_account_perception_tax_line,l10nar_percepciones_manuales.account_perception_tax_line,l10nar_percepciones_manuales.model_account_perception_tax_line,group_sale_portal_salesman,1,0,0,0
+access_stock_picking,stock.stock_picking,stock.model_stock_picking,group_sale_portal_salesman,1,0,0,0
 access_stock_move,stock.stock_move,stock.model_stock_move,group_sale_portal_salesman,1,0,0,0
 access_res_users,res.users,base.model_res_users,group_sale_portal_salesman,1,1,1,1
 access_sale_order,sale.order,sale.model_sale_order,group_sale_portal_salesman,1,1,1,0
