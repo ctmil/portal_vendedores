@@ -34,6 +34,7 @@
             <field name="name">sale.order.form.portal.ventas</field>
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="groups_id" eval="[(6, 0, [ref('group_sale_portal_salesman') ])]"/>
             <field name="arch" type="xml">
 		<field name="currency_id" position="after">
 			<field name="to_process" readonly="1" />
@@ -46,6 +47,9 @@
 				groups="portal_vendedores.group_sale_portal_salesman" 
 				states="draft,sent" />
 		</button>
+		<field name="fiscal_position" position="attributes">
+			<attribute name="readonly">1</attribute>
+		</field>
             </field>
         </record>
 
