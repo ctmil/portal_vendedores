@@ -44,11 +44,21 @@
 		<button name="cancel" position="after">	
 			<button name="action_to_process" type="object" string="Pedido Terminado" 
 				groups="portal_vendedores.group_sale_portal_salesman" 
-				states="draft,sent"
-				attrs="{'invisible': [('to_process', '=', True)]}"/>
+				states="draft,sent" />
 		</button>
             </field>
         </record>
+
+        <record model="ir.ui.view" id="sale_order_search_portal_ventas">
+            <field name="name">sale.order.search.portal.ventas</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+            <field name="arch" type="xml">
+		<filter string="Done" position="after">
+                    <filter string="Pedidos Terminados" name="to_process" domain="[('to_process','=',True)]"/>
+		</filter>
+	    </field>
+	</record>
 
         <record id="portal_customer_rfm_tree" model="ir.ui.view">
                 <field name="name">Clientes RFM</field>
