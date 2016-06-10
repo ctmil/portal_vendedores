@@ -13,7 +13,7 @@
             <field name="model">account.journal</field>
             <field name="inherit_id" ref="account.view_account_journal_form"/>
             <field name="arch" type="xml">
-		<field name="currency">
+		<field name="currency" position="after">
 			<field name="is_retention" />
 		</field>
             </field>
