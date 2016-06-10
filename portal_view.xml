@@ -134,7 +134,7 @@
             <field name="res_model">account.move.line</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
-            <field name="view_id" ref="portal_customer_rfm_tree"/>
+            <!-- field name="view_id" ref="portal_customer_rfm_tree"/ -->
             <field name="domain">[('account_id', '=', 11)]</field>
         </record>
 
