@@ -16,3 +16,8 @@ class sale_order(models.Model):
 			self.to_process = False
 		else:
 			self.to_process = True
+
+class account_journal(models.Model):
+	_inherit = 'account.journal'
+
+	is_retention = fields.Boolean(string='Es retencion', default=False)

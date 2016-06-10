@@ -8,6 +8,17 @@
             This menu item's purpose is to overwrite another one defined in
             the base module in order to set new groups.
         -->
+        <record model="ir.ui.view" id="account_journal_portal_ventas">
+            <field name="name">account.journal.form.portal.ventas</field>
+            <field name="model">account.journal</field>
+            <field name="inherit_id" ref="account.view_account_journal_form"/>
+            <field name="arch" type="xml">
+		<field name="currency">
+			<field name="is_retention" />
+		</field>
+            </field>
+        </record>
+
         <record model="ir.ui.view" id="stock_picking_form_portal_ventas">
             <field name="name">stock.picking.form.portal.ventas</field>
             <field name="model">stock.picking</field>
