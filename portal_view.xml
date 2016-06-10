@@ -50,6 +50,18 @@
 		<field name="fiscal_position" position="attributes">
 			<attribute name="readonly">1</attribute>
 		</field>
+		<field name="user_id" position="attributes">
+			<attribute name="readonly">1</attribute>
+		</field>
+		<field name="section_id" position="attributes">
+			<attribute name="readonly">1</attribute>
+		</field>
+		<field name="picking_policy" position="attributes">
+			<attribute name="readonly">1</attribute>
+		</field>
+		<field name="order_policy" position="attributes">
+			<attribute name="readonly">1</attribute>
+		</field>
             </field>
         </record>
 
@@ -116,6 +128,16 @@
             <field name="help">No cuenta con presupuestos creados.</field>
         </record>
 
+        <record id="action_account_move_line_tree" model="ir.actions.act_window">
+            <field name="name">Cuentas Corrientes</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">account.move.line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="portal_customer_rfm_tree"/>
+            <field name="domain">[('account_id', '=', 11)]</field>
+        </record>
+
 
         <menuitem name="Portal Ventas"
             id="menu_portal_ventas"
@@ -132,6 +154,8 @@
             action="action_saleorders_tree_portal" sequence="30"/>
         <menuitem name="Clientes" id="portal_ventas_clientes" parent="menu_portal_ventas_ventas" 
             action="action_res_partner_tree_portal" sequence="30"/>
+        <menuitem name="Cuenta Corriente" id="menuitem_cuenta_corriente" parent="account.menu_finance_receivables" 
+            action="action_move_line_tree" sequence="100"/>
 
 
     </data>
