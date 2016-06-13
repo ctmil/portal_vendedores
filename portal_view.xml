@@ -69,10 +69,10 @@
 		</field>
 		<!-- field name="picking_policy" position="attributes">
 			<attribute name="readonly">1</attribute>
-		</field>
+		</field -->
 		<field name="order_policy" position="attributes">
 			<attribute name="readonly">1</attribute>
-		</field -->
+		</field>
             </field>
         </record>
 
