@@ -22,6 +22,27 @@ class account_journal(models.Model):
 
 	is_retention = fields.Boolean(string='Es retencion', default=False)
 
+class account_move_line(models.Model):
+	_inherit = 'account.move.line'
+
+	@api.one
+	def _compute_saldo(self):
+		saldo = 0
+		if self.account_id.id == 11:
+			move_lines = self.env['account.move.line'].search([('id','<=',self.id),('account_id','=',11),\
+					('partner_id','=',self.partner_id.id)],order='id asc')
+			for line in move_lines:
+				if line.debit > 0:
+					saldo = saldo + line.debit
+				if line.credit > 0:
+					saldo = saldo - line.credit
+			self.saldo = saldo
+		else:
+			self.saldo = 0
+
+	saldo = fields.Float(string='Saldo',compute=_compute_saldo)
+
+
 class account_voucher(models.Model):
 	_inherit = 'account.voucher'
 
