@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from openerp import models, api, fields, exceptions
-
+from openerp.exceptions import ValidationError
 
 class sale_order(models.Model):
 	_inherit = "sale.order"
@@ -68,3 +68,17 @@ class account_voucher(models.Model):
 					if vals['reference']:
 						raise exceptions.ValidationError('No ingreso el nro de certificado de retencion')
 		return super(account_voucher, self).write(vals)
+
+
+class account_invoice(models.Model):
+	_inherit = 'account.invoice'
+	
+	@api.one
+	@api.constrains('supplier_invoice_number')
+	def check_invoice_number(self):
+		if self.supplier_invoice_number:
+			invoices = self.env['account.invoice'].search([('partner_id','=',self.partner_id.id),\
+					('type','=','in_invoice'),('supplier_invoice_number','=',self.supplier_invoice_number)])
+			if len(invoices) > 1:
+			        raise ValidationError("Fields name and description must be different")
+
