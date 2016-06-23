@@ -6,6 +6,7 @@ class sale_order(models.Model):
 	_inherit = "sale.order"
 
 	to_process = fields.Boolean(string='Confirmar Pedido',default=False)
+	balance_ok = fields.Boolean(string='OK Cta Cte',default=False)
 
 	@api.one
 	def action_to_process(self):
@@ -16,6 +17,17 @@ class sale_order(models.Model):
 			self.to_process = False
 		else:
 			self.to_process = True
+
+	@api.one
+	def action_balance_ok(self):
+		self.ensure_one()
+		if self.state != 'draft':
+			return None
+		if self.balance_ok:	
+			self.balance_ok = False
+		else:
+			self.balance_ok = True
+
 
 class account_journal(models.Model):
 	_inherit = 'account.journal'
