@@ -66,6 +66,18 @@
             </field>
         </record>
 
+        <record model="ir.ui.view" id="sale_order_tree_portal_ventas">
+            <field name="name">sale.order.tree.portal.ventas</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_quotation_tree"/>
+            <field name="arch" type="xml">
+		<field name="state" position="after">	
+			<field name="to_process" />
+			<field name="balance_ok" />
+		</field>
+	    </field>
+	</record>
+
         <record model="ir.ui.view" id="sale_order_form_portal_ventas">
             <field name="name">sale.order.form.portal.ventas</field>
             <field name="model">sale.order</field>
