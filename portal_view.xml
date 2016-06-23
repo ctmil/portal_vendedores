@@ -83,8 +83,8 @@
 			<button name="action_to_process" type="object" string="Pedido Terminado" 
 				groups="portal_vendedores.group_sale_portal_salesman" 
 				states="draft,sent" />
-			<button name="action_balance_ok" type="object" string="Pedido Terminado" 
-				groups="portal_vendedores.group_sale_portal_salesman" 
+			<button name="action_balance_ok" type="object" string="OK Cuenta Corriente" 
+				groups="base.group_sale_manager" 
 				states="draft,sent" />
 		</button>
 		<field name="fiscal_position" position="attributes">
@@ -112,6 +112,7 @@
             <field name="arch" type="xml">
 		<filter string="Done" position="after">
                     <filter string="Pedidos Terminados" name="to_process" domain="[('to_process','=',True)]"/>
+                    <filter string="OK Cuenta Corriente" name="balance_ok" domain="[('balance_ok','=',True)]"/>
 		</filter>
 	    </field>
 	</record>
