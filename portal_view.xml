@@ -73,6 +73,7 @@
             <field name="arch" type="xml">
 		<field name="state" position="after">	
 			<field name="to_process" />
+			<field name="figures_ok" />
 			<field name="balance_ok" />
 		</field>
 	    </field>

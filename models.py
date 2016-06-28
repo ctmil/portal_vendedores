@@ -14,7 +14,9 @@ class sale_order(models.Model):
 		self.ensure_one()
 		if self.state != 'draft':
 			return None
-		if self.to_process:	
+		if not self.to_process:
+			raise exceptions.ValidationError('Primero el vendedor debe marcar el pedido como confirmado')
+		if self.figures_ok:	
 			self.figures_ok = False
 		else:
 			self.figures_ok = True
@@ -36,6 +38,10 @@ class sale_order(models.Model):
 		self.ensure_one()
 		if self.state != 'draft':
 			return None
+		if not self.to_process:
+			raise exceptions.ValidationError('Primero el vendedor debe marcar el pedido como confirmado')
+		if not self.figures_ok:
+			raise exceptions.ValidationError('Primero debe indicarse que los Precios/Cantidades estan OK')
 		if self.balance_ok:	
 			self.balance_ok = False
 		else:
