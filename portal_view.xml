@@ -86,6 +86,7 @@
             <field name="arch" type="xml">
 		<field name="currency_id" position="after">
 			<field name="to_process" readonly="1" />
+			<field name="figures_ok" readonly="1" />
 			<field name="balance_ok" readonly="1" />
 		</field>
 		<button name="action_button_confirm" position="attributes">
@@ -94,6 +95,9 @@
 		<button name="cancel" position="after">	
 			<button name="action_to_process" type="object" string="Pedido Terminado" 
 				groups="portal_vendedores.group_sale_portal_salesman" 
+				states="draft,sent" />
+			<button name="action_figures_ok" type="object" string="OK Cantidades/Precios" 
+				groups="base.group_sale_manager" 
 				states="draft,sent" />
 			<button name="action_balance_ok" type="object" string="OK Cuenta Corriente" 
 				groups="base.group_sale_manager" 

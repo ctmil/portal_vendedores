@@ -7,6 +7,19 @@ class sale_order(models.Model):
 
 	to_process = fields.Boolean(string='Confirmar Pedido',default=False)
 	balance_ok = fields.Boolean(string='OK Cta Cte',default=False)
+	figures_ok = fields.Boolean(string='OK Precios/Cantidades',default=False)
+
+	@api.one
+	def action_figures_ok(self):
+		self.ensure_one()
+		if self.state != 'draft':
+			return None
+		if self.to_process:	
+			self.figures_ok = False
+		else:
+			self.figures_ok = True
+
+	@api.one
 
 	@api.one
 	def action_to_process(self):
