@@ -129,6 +129,7 @@
             <field name="arch" type="xml">
 		<filter string="Done" position="after">
                     <filter string="Pedidos Terminados" name="to_process" domain="[('to_process','=',True)]"/>
+                    <filter string="OK Cantidades/Precios" name="figures_ok" domain="[('figures_ok','=',True)]"/>
                     <filter string="OK Cuenta Corriente" name="balance_ok" domain="[('balance_ok','=',True)]"/>
 		</filter>
 	    </field>
