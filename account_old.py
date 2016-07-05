@@ -37,7 +37,7 @@ class account_voucher(osv.osv):
 		for voucher_id in ids:
 			voucher = self.pool.get('account.voucher').browse(cr,uid,voucher_id)
         		import pdb;pdb.set_trace()
-			if voucher.voucher_type == 'receipt' 
+			if voucher.voucher_type == 'receipt':
 				if voucher.line_dr_ids:
 					raise osv.except_osv(_('Accion invalida!'),\
 						 _('Se seleccionaron debitos en pagos de clientes.'))					
