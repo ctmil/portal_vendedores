@@ -34,7 +34,7 @@ class account_voucher(osv.osv):
 	_inherit = 'account.voucher'
 
 	_columns = {
-		'avoid_check': fields.boolean('Evitar controles')
+		'avoid_check': fields.boolean('Evitar controles'),
 		}
 
 	def proforma_voucher(self, cr, uid, ids, context=None):
@@ -48,6 +48,7 @@ class account_voucher(osv.osv):
 				else:
 					if voucher.line_cr_ids:
 						raise osv.except_osv(_('Accion invalida!'),\
+							 _('Se seleccionaron creditos en pagos a proveedores.'))					
 	        return  super(account_voucher,self).proforma_voucher(cr,uid,ids,context)
 
 account_voucher()
