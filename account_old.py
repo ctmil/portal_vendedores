@@ -40,6 +40,7 @@ class account_voucher(osv.osv):
 	def proforma_voucher(self, cr, uid, ids, context=None):
 		for voucher_id in ids:
 			voucher = self.pool.get('account.voucher').browse(cr,uid,voucher_id)
+			#import pdb;pdb.set_trace()
 			if not voucher.avoid_check:
 				if voucher.type == 'receipt':
 					if voucher.line_dr_ids:
@@ -49,7 +50,19 @@ class account_voucher(osv.osv):
 					if voucher.line_cr_ids:
 						raise osv.except_osv(_('Accion invalida!'),\
 							 _('Se seleccionaron creditos en pagos a proveedores.'))					
+				#if voucher.type == 'receipt':
+				#	for line_cr in voucher.line_cr_ids:
+				#		print line_cr.name
 	        return  super(account_voucher,self).proforma_voucher(cr,uid,ids,context)
 
 account_voucher()
 
+class account_invoice(osv.osv):
+	_inherit = 'account.invoice'
+
+	def invoice_pay_customer(self, cr, uid, ids, context=None):
+		raise osv.except_osv(_('Accion invalida!'),\
+			 _('Metodo no disponible.'))					
+		return None
+
+account_invoice()
