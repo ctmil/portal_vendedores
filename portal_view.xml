@@ -218,7 +218,7 @@
 	    parent="menu_portal_ventas"
             groups="group_sale_portal_salesman"/>
 
-        <menuitem name="Facturas" id="portal_ventas_facturas" parent="menu_portal_ventas_facturas" 
+        <menuitem name="Facturas" id="portal_ventas_facturas" parent="menu_portal_ventas_ventas" 
             action="action_invoices_tree_portal" sequence="10"/>
         <menuitem name="Presupuestos" id="portal_ventas_presupuestos" parent="menu_portal_ventas_ventas" 
             action="action_quotations_tree_portal" sequence="30"/>
