@@ -36,7 +36,6 @@ class account_voucher(osv.osv):
 	def proforma_voucher(self, cr, uid, ids, context=None):
 		for voucher_id in ids:
 			voucher = self.pool.get('account.voucher').browse(cr,uid,voucher_id)
-        		import pdb;pdb.set_trace()
 			if voucher.type == 'receipt':
 				if voucher.line_dr_ids:
 					raise osv.except_osv(_('Accion invalida!'),\
