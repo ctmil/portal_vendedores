@@ -33,17 +33,21 @@ import openerp
 class account_voucher(osv.osv):
 	_inherit = 'account.voucher'
 
+	_columns = {
+		'avoid_check': fields.boolean('Evitar controles')
+		}
+
 	def proforma_voucher(self, cr, uid, ids, context=None):
 		for voucher_id in ids:
 			voucher = self.pool.get('account.voucher').browse(cr,uid,voucher_id)
-			if voucher.type == 'receipt':
-				if voucher.line_dr_ids:
-					raise osv.except_osv(_('Accion invalida!'),\
-						 _('Se seleccionaron debitos en pagos de clientes.'))					
-			else:
-				if voucher.line_cr_ids:
-					raise osv.except_osv(_('Accion invalida!'),\
-						 _('Se seleccionaron creditos en pagos a proveedores.'))					
+			if not voucher.avoid_check:
+				if voucher.type == 'receipt':
+					if voucher.line_dr_ids:
+						raise osv.except_osv(_('Accion invalida!'),\
+							 _('Se seleccionaron debitos en pagos de clientes.'))					
+				else:
+					if voucher.line_cr_ids:
+						raise osv.except_osv(_('Accion invalida!'),\
 	        return  super(account_voucher,self).proforma_voucher(cr,uid,ids,context)
 
 account_voucher()
