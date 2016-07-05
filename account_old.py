@@ -34,7 +34,17 @@ class account_voucher(osv.osv):
 	_inherit = 'account.voucher'
 
 	def proforma_voucher(self, cr, uid, ids, context=None):
-        	import pdb;pdb.set_trace()
+		for voucher_id in ids:
+			voucher = self.pool.get('account.voucher').browse(cr,uid,voucher_id)
+        		import pdb;pdb.set_trace()
+			if voucher.voucher_type == 'receipt' 
+				if voucher.line_dr_ids:
+					raise osv.except_osv(_('Accion invalida!'),\
+						 _('Se seleccionaron debitos en pagos de clientes.'))					
+			else:
+				if voucher.line_cr_ids:
+					raise osv.except_osv(_('Accion invalida!'),\
+						 _('Se seleccionaron creditos en pagos a proveedores.'))					
 	        return  super(account_voucher,self).proforma_voucher(cr,uid,ids,context)
 
 account_voucher()
