@@ -174,6 +174,17 @@
             <field name="help">No cuenta con pedidos creados.</field>
         </record>
 
+        <record id="action_invoices_tree_portal" model="ir.actions.act_window">
+            <field name="name">Portal Facturas</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">account.invoice</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!-- field name="view_id" ref="view_portal_quotation_tree"/ -->
+            <field name="domain">[('state', 'in', ['open', 'paid'])]</field>
+            <!-- field name="groups_id" eval="[(6, 0, [ref('base.group_portal') ])]"/ -->
+            <field name="help">No existen facturas procesadas.</field>
+        </record>
 
         <record id="action_quotations_tree_portal" model="ir.actions.act_window">
             <field name="name">Portal Presupuestos</field>
@@ -207,6 +218,8 @@
 	    parent="menu_portal_ventas"
             groups="group_sale_portal_salesman"/>
 
+        <menuitem name="Facturas" id="portal_ventas_facturas" parent="menu_portal_ventas_facturas" 
+            action="action_invoices_tree_portal" sequence="10"/>
         <menuitem name="Presupuestos" id="portal_ventas_presupuestos" parent="menu_portal_ventas_ventas" 
             action="action_quotations_tree_portal" sequence="30"/>
         <menuitem name="Pedidos" id="portal_ventas_pedidos" parent="menu_portal_ventas_ventas" 
