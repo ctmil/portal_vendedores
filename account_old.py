@@ -61,8 +61,11 @@ class account_invoice(osv.osv):
 	_inherit = 'account.invoice'
 
 	def invoice_pay_customer(self, cr, uid, ids, context=None):
-		raise osv.except_osv(_('Accion invalida!'),\
-			 _('Metodo no disponible.'))					
-		return None
+		if self.type in ['in_invoice','in_refund']:
+			return super(account_invoice,self).invoice_pay_customer(cr,uid,ids,context)
+		else:
+			raise osv.except_osv(_('Accion invalida!'),\
+				 _('Metodo no disponible.'))					
+			return None
 
 account_invoice()
