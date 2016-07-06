@@ -61,7 +61,12 @@ class account_invoice(osv.osv):
 	_inherit = 'account.invoice'
 
 	def invoice_pay_customer(self, cr, uid, ids, context=None):
-		if self.type in ['in_invoice','in_refund']:
+		to_process = True
+		for invoice_id in ids:
+			invoice = self.pool.get('account.invoice').browse(cr,uid,invoice_id)
+			if invoice.type in ['out_invoice','out_refund']:
+				to_process = False
+		if to_process:
 			return super(account_invoice,self).invoice_pay_customer(cr,uid,ids,context)
 		else:
 			raise osv.except_osv(_('Accion invalida!'),\
