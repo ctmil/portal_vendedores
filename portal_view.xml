@@ -64,6 +64,9 @@
 		<field name="order_policy" position="attributes">
 			<attribute name="readonly">1</attribute>
 		</field>
+		<field name="client_order_ref" position="attributes">
+			<attribute name="string">Orden de Compra</attribute>
+		</field>
             </field>
         </record>
 
