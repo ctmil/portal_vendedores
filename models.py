@@ -6,7 +6,7 @@ class sale_order(models.Model):
 	_inherit = "sale.order"
 
 	@api.one
-	def _compute_number_lines:
+	def _compute_number_lines(self):
 		return_value = 0
 		for line in self.order_line:
 			return_value = return_value + 1
