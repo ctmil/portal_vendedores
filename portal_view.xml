@@ -67,6 +67,11 @@
 		<field name="client_order_ref" position="attributes">
 			<attribute name="string">Orden de Compra</attribute>
 		</field>
+                <xpath expr="//form[@string='Sales Order']/sheet/h1" position="after">
+			<h2>
+				<field name="number_lines" />
+			</h2>
+		</xpath>
             </field>
         </record>
 

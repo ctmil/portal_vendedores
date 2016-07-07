@@ -5,9 +5,17 @@ from openerp.exceptions import ValidationError
 class sale_order(models.Model):
 	_inherit = "sale.order"
 
+	@api.one
+	def _compute_number_lines:
+		return_value = 0
+		for line in self.order_line:
+			return_value = return_value + 1
+		self.number_lines = return_value
+
 	to_process = fields.Boolean(string='Confirmar Pedido',default=False)
 	balance_ok = fields.Boolean(string='OK Cta Cte',default=False)
 	figures_ok = fields.Boolean(string='OK Precios/Cantidades',default=False)
+	number_lines = fields.Integer(string='Cantidad de lineas',compute=_compute_number_lines)
 
 	@api.one
 	def action_figures_ok(self):
