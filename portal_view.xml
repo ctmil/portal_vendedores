@@ -69,8 +69,8 @@
 		</field>
                 <xpath expr="//form[@string='Sales Order']/sheet/h1" position="after">
 			<h2>
-				<label string="Cantidad de lineas " />
-				<field name="number_lines" />
+				<label string="# lineas "  style="color:red;"/>
+				<field name="number_lines" style="color:red;"/>
 			</h2>
 		</xpath>
             </field>
