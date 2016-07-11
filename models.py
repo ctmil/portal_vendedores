@@ -94,6 +94,8 @@ class account_voucher(models.Model):
 					raise exceptions.ValidationError('No ingreso el nro de certificado de retencion')
 				if vals['reference'] == '':
 					raise exceptions.ValidationError('No ingreso el nro de certificado de retencion')
+				if not vals['fecha_retencion']:
+					raise exceptions.ValidationError('No ingreso la fecha de retencion')
 		return super(account_voucher, self).create(vals)
 	
 	@api.multi
@@ -105,9 +107,14 @@ class account_voucher(models.Model):
 					if not vals['reference']:
 						raise exceptions.ValidationError('No ingreso el nro de certificado de retencion')
 					if vals['reference']:
+				if not vals['fecha_retencion']:
+					raise exceptions.ValidationError('No ingreso la fecha de retencion')
 						raise exceptions.ValidationError('No ingreso el nro de certificado de retencion')
+				if not vals['fecha_retencion']:
+					raise exceptions.ValidationError('No ingreso la fecha de retencion')
 		return super(account_voucher, self).write(vals)
 
+	fecha_retencion = fields.Date(string='Fecha Retencion')
 
 class account_invoice(models.Model):
 	_inherit = 'account.invoice'

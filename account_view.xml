@@ -26,6 +26,7 @@
             <field name="arch" type="xml">
 		<field name="date" position="after">
 			<field name="avoid_check" />
+			<field name="fecha_retencion" />
 		</field>
             </field>
         </record>
