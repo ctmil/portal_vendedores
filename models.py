@@ -12,10 +12,19 @@ class sale_order(models.Model):
 			return_value = return_value + 1
 		self.number_lines = return_value
 
+	@api.one
+	def _compute_percepciones(self):
+		return_value = 0
+		if self.partner_id.perception_ids:
+			for perception in self.partner_id.perception_ids:
+				return_value = return_value + self.amount_untaxed * (perception.percent / 100)
+		self.monto_percepciones = return_value
+
 	to_process = fields.Boolean(string='Confirmar Pedido',default=False)
 	balance_ok = fields.Boolean(string='OK Cta Cte',default=False)
 	figures_ok = fields.Boolean(string='OK Precios/Cantidades',default=False)
 	number_lines = fields.Integer(string='Cantidad de lineas',compute=_compute_number_lines)
+	monto_percepciones = fields.Float(string='Monto Percepciones',compute=_compute_percepciones)
 
 	@api.one
 	def action_figures_ok(self):
