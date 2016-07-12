@@ -73,6 +73,9 @@
 				<field name="number_lines" style="color:red;"/>
 			</h2>
 		</xpath>
+		<field name="amount_total" position="after">
+			<field name="monto_percepciones" />
+		</field>
             </field>
         </record>
 
