@@ -75,6 +75,7 @@
 		</xpath>
 		<field name="amount_total" position="after">
 			<field name="monto_percepciones" />
+			<field name="monto_con_percepciones" />
 		</field>
             </field>
         </record>
