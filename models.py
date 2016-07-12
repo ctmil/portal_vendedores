@@ -30,8 +30,6 @@ class sale_order(models.Model):
 			self.figures_ok = True
 
 	@api.one
-
-	@api.one
 	def action_to_process(self):
 		self.ensure_one()
 		if self.state != 'draft':
