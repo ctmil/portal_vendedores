@@ -52,6 +52,25 @@
 		</button>
             </field>
         </record>
+
+        <record model="ir.ui.view" id="sale_stock_form_portal_ventas_manager">
+            <field name="name">sale.stock.form.portal.ventas.manager</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_stock.view_order_form_inherit"/>
+            <field name="groups_id" eval="[(6, 0, [ref('base.group_sale_manager') ])]"/>
+            <field name="arch" type="xml">
+		<button name="cancel" position="after">	
+			<button name="action_figures_ok" type="object" string="OK Cantidades/Precios" 
+				groups="base.group_sale_manager" 
+				states="draft,sent" />
+			<button name="action_balance_ok" type="object" string="OK Cuenta Corriente" 
+				groups="base.group_sale_manager" 
+				states="draft,sent" />
+		</button>
+		
+	    </field>
+	</record>
+
         <record model="ir.ui.view" id="sale_stock_form_portal_ventas">
             <field name="name">sale.stock.form.portal.ventas</field>
             <field name="model">sale.order</field>
