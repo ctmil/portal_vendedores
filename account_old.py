@@ -74,3 +74,13 @@ class account_invoice(osv.osv):
 			return None
 
 account_invoice()
+
+
+class sale_order_line(osv.osv):
+        _inherit = 'sale.order.line'
+
+
+        def _check_routing(self, cr, uid, ids, product, warehouse_id, context=None):
+                return True
+
+sale_order_line()
