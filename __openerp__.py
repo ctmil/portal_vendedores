@@ -2,7 +2,7 @@
     'name': 'Portal - Vendedores',
     'category': 'Sales',
     'version': '0.1',
-    'depends': ['base','account','sale','product','stock','l10nar_percepciones_manuales','account_voucher','sale_stock','account_voucher'],
+    'depends': ['base','account','sale','product','stock','l10nar_percepciones_manuales','account_voucher','sale_stock','account_voucher','product'],
     'data': [
 	'security/security.xml',
 	'security/ir.model.access.csv',

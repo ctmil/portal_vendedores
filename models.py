@@ -139,4 +139,8 @@ class account_invoice(models.Model):
 			        raise ValidationError("Fields name and description must be different")
 
 
+class product_template(models.Model):
+	_inherit = 'product.template'
+
+        description = fields.Text('Description',translate=True,copy=False,help="A precise description of the Product, used only for internal information purposes."),
 
