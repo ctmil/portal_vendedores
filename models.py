@@ -142,5 +142,5 @@ class account_invoice(models.Model):
 class product_template(models.Model):
 	_inherit = 'product.template'
 
-        description = fields.Text('Description',translate=True,copy=False,help="A precise description of the Product, used only for internal information purposes."),
+        description = fields.Text(copy=False)
 
