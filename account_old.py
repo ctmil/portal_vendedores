@@ -84,3 +84,16 @@ class sale_order_line(osv.osv):
                 return True
 
 sale_order_line()
+
+class product_template(osv.osv):
+	_inherit = 'product.template'
+
+	def copy(self, cr, uid, id, default=None, context=None):
+		if default is None:
+			default = {}
+		template = self.browse(cr, uid, id, context=context)
+		default['description'] = ""
+		return super(product_template, self).copy(cr, uid, id, default=default, context=context)
+
+
+product_template()
