@@ -144,3 +144,14 @@ class product_template(models.Model):
 
         description = fields.Text(copy=False)
 
+class account_invoice_line(models.Model):
+	_inherit = 'account.invoice.line'
+
+	@api.one
+	def _compute_price_unit_report(self):
+		if self.invoice_id.journal_id.code == 'FVB0005':
+			self.price_unit_report = self.price_unit / 1.21
+		else:
+			self.price_unit_report = self.price_unit
+
+	price_unit_report = fields.Float('Price Unit Reporrt',compute=_compute_price_unit_report)
