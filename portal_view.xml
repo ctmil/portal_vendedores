@@ -182,6 +182,22 @@
                         </tree>
                 </field>
         </record>
+        <record id="portal_customer_address_tree" model="ir.ui.view">
+                <field name="name">Direcciones Clientes</field>
+                <field name="model">res.partner</field>
+                <field name="arch" type="xml">
+                        <tree>
+                                <field name="name"/>
+                                <field name="street"/>
+                                <field name="city"/>
+                                <field name="state_id"/>
+                                <field name="phone"/>
+                                <field name="email"/>
+                                <field name="credit"/>
+                        </tree>
+                </field>
+        </record>
+
 
         <record id="action_res_partner_tree_portal" model="ir.actions.act_window">
             <field name="name">Portal Clientes</field>
@@ -190,6 +206,17 @@
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref="portal_customer_rfm_tree"/>
+            <field name="domain">[('is_company', '=', True)]</field>
+            <field name="groups_id" eval="[(6, 0, [ref('group_sale_portal_salesman') ])]"/>
+            <field name="help">No cuenta con clientes asignados.</field>
+        </record>
+        <record id="action_res_partner_address_tree_portal" model="ir.actions.act_window">
+            <field name="name">Portal Direcciones Clientes</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="portal_customer_address_tree"/>
             <field name="domain">[('is_company', '=', True)]</field>
             <field name="groups_id" eval="[(6, 0, [ref('group_sale_portal_salesman') ])]"/>
             <field name="help">No cuenta con clientes asignados.</field>
@@ -259,6 +286,8 @@
             action="action_saleorders_tree_portal" sequence="30"/>
         <menuitem name="Clientes" id="portal_ventas_clientes" parent="menu_portal_ventas_ventas" 
             action="action_res_partner_tree_portal" sequence="30"/>
+        <menuitem name="Direcciones Clientes" id="portal_ventas_clientes_direcciones" parent="menu_portal_ventas_ventas" 
+            action="action_res_partner_address_tree_portal" sequence="30"/>
         <menuitem name="Cuenta Corriente" id="menuitem_cuenta_corriente" parent="account.menu_finance_receivables" 
             action="action_account_move_line_tree" sequence="100"/>
 
