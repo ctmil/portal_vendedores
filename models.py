@@ -34,6 +34,7 @@ class sale_order(models.Model):
         @api.multi
         def write(self,vals):
 		if self.to_process or self.balance_ok or self.figures_ok:
+			# Controla que la orden este en proceso por administracion
 			user = self.env['res.users'].browse(self.env.context['uid'])
 			if user.has_group('portal_vendedores.group_sale_portal_salesman'):
 				raise exceptions.ValidationError('La orden ya esta en proceso por administracion')
