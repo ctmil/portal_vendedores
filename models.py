@@ -61,6 +61,23 @@ class sale_order(models.Model):
 			self.to_process = False
 		else:
 			self.to_process = True
+		sales_rep = self.env['res.users'].browse(self.env.context['uid'])
+		admin_user = self.env['res.users'].browse(1)
+                admin_user.message_post('El vendedor '+sales_rep.name+' ha terminado el pedido '+self.name)
+                subject = 'Pedido ' + self.name + ' terminado'
+                body = 'A quien corresponda\n'
+                body += 'El pedido ' + self.name + ' fue finalizado por el vendedor ' + sales_rep.name
+                body_html = '<p>A quien corresponda</p>'
+                body_html += '</p>El pedido ' + self.name + ' fue finalizado por el vendedor ' + sales_rep.name + '</p>'
+                email_to = 'ventasyfacturacion@gmail.com'
+                vals = {
+               		'body': body,
+                        'body_html': body_html,
+                        'subject': subject,
+                        'email_to': email_to
+                        }
+                msg = self.env['mail.mail'].create(vals)
+
 
 	@api.one
 	def action_balance_ok(self):
