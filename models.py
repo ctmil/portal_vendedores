@@ -63,7 +63,7 @@ class sale_order(models.Model):
 			self.to_process = True
 		sales_rep = self.env['res.users'].browse(self.env.context['uid'])
 		admin_user = self.env['res.users'].browse(1)
-                admin_user.message_post('El vendedor '+sales_rep.name+' ha terminado el pedido '+self.name)
+                admin_user.message_post(body='El vendedor '+sales_rep.name+' ha terminado el pedido '+self.name)
                 subject = 'Pedido ' + self.name + ' terminado'
                 body = 'A quien corresponda\n'
                 body += 'El pedido ' + self.name + ' fue finalizado por el vendedor ' + sales_rep.name
