@@ -31,6 +31,14 @@ class sale_order(models.Model):
 	monto_percepciones = fields.Float(string='Monto Percepciones',compute=_compute_percepciones)
 	monto_con_percepciones = fields.Float(string='Total con Percepciones',compute=_compute_con_percepciones)
 
+        @api.multi
+        def write(self,vals):
+		if self.to_process or self.balance_ok or self.figures_ok:
+			user = self.env.context['uid']
+			if user.has_group('portal_vendedores.group_sale_portal_salesman'):
+				raise exceptions.ValidationError('La orden ya esta en proceso por administracion')
+		return super(sale_order, self).write(vals)
+
 	@api.one
 	def action_figures_ok(self):
 		self.ensure_one()
